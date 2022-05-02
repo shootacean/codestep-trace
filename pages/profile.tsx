@@ -9,7 +9,7 @@ const Header = styled.header`
   justify-content: space-between;
   width: 100%;
   height: 60px;
-  padding: 10px 128px;
+  padding: 10px 4%;
 `
 
 const Logo = styled.h1`
