@@ -4,6 +4,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const devices = {
+  mobile: '(max-width: 600px)'
+}
+
 const Header = styled.header`
   display: flex;
   justify-content: space-between;
@@ -45,7 +49,6 @@ const MenuItem = styled.li`
 `;
 
 const Main = styled.main`
-  width: 960px;
   margin: 0 auto;
   padding: 0 4%;
 `
@@ -62,7 +65,7 @@ const Heading = styled.h1`
   margin: 16px auto 60px;
   padding-bottom: 4px;
   font-size: 2.4rem;
-  font-weight: nornal;
+  font-weight: normal;
   letter-spacing: 1px;
   
   &::after {
@@ -78,13 +81,19 @@ const Heading = styled.h1`
 `
 
 const AboutBox = styled.section`
-  padding: 80px 128px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 4%;
   text-align: center;
 `
 
 const Profile = styled.div`
   display: flex;
   text-align: left;
+
+  @media ${devices.mobile} {
+    flex-direction: column;
+  }
 `
 
 const Avator = styled(Image)`
@@ -105,7 +114,8 @@ const ProfileDetail = styled.div`
 `
 
 const BicycleBox = styled.section`
-  padding: 80px 0;
+  width: 100%:
+  padding: 80px 4%;
   text-align: center;
 `
 
@@ -113,6 +123,10 @@ const BicycleList = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
+  @media ${devices.mobile} {
+    flex-direction: column;
+  }
 `
 
 const Bicycle = styled.div``
@@ -131,6 +145,7 @@ const BicycleDescription = styled.p`
 const Footer = styled.footer`
   width: 100%;
   height: 30px;
+  margin-top: 12px;
   text-align: center;
   line-height: 30px;
 `
@@ -140,7 +155,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Profile | Codestep Trace</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, min-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Header>
         <Logo><Link href="/profile">Profile</Link></Logo>
