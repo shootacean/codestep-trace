@@ -171,7 +171,9 @@ const Home: NextPage = () => {
         <AboutBox id='about'>
           <Heading as='h2'>About</Heading>
           <Profile>
-            <Avator src='https://picsum.photos/200/200' width='200' height='200' alt='アバター' />
+            <div style={{width: 200, height: 200}}>
+              <Avator src='https://picsum.photos/200/200' width='200' height='200' layout='responsive' alt='アバター' />
+            </div>
             <ProfileDetail>
               <p className='name'>shootacean</p>
               <p className='text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
