@@ -97,11 +97,17 @@ const Profile = styled.div`
 `
 
 const Avator = styled(Image)`
+  margin: 8px;
   border-radius: 50%;
 `
 
 const ProfileDetail = styled.div`
+  margin-top: 16px;
   padding-left: 32px;
+
+  @media ${devices.mobile} {
+    padding-left: 0;
+  }
 
   .name {
     margin-bottom: 8px;
@@ -171,7 +177,7 @@ const Home: NextPage = () => {
         <AboutBox id='about'>
           <Heading as='h2'>About</Heading>
           <Profile>
-            <div style={{width: 200, height: 200}}>
+            <div style={{width: 200, height: 200, margin: '0 auto'}}>
               <Avator src='https://picsum.photos/200/200' width='200' height='200' layout='responsive' alt='アバター' />
             </div>
             <ProfileDetail>
