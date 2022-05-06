@@ -156,7 +156,7 @@ const Footer = styled.footer`
   line-height: 30px;
 `
 
-const Home: NextPage = () => {
+const ProfilePage: NextPage = () => {
   return (
     <>
       <Head>
@@ -208,4 +208,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default ProfilePage
