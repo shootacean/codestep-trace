@@ -4,30 +4,49 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const devices = {
+  desktop: '(min-width: 1024px)',
+}
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 8% 4% 0;
   background-color: #f4f9fe;
+  
+  @media ${devices.desktop} {
+    padding: 4% 8% 0;
+  }
 `
 
 const Header = styled.header`
   margin-top: 40px;
   font-weight: normal;
   letter-spacing: 1px;
+
+  @media ${devices.desktop} {
+    margin-top: 0;
+  }
 `
 
 const Main = styled.main`
   margin-top: 8px;
 `
 
-const MainVisual = styled.div``
+const MainVisual = styled.div`
+  width: 100%;
+`
 
 const Index = styled.section`
   margin: 8% -4%;
   padding: 8%;
   background-color: #fff;
   font-size: 1.0rem;
+
+  @media ${devices.desktop} {
+    margin: 8% 0 0;
+    padding: 4% 20%;
+  }
 `
 
 const IndexList = styled.ol`
@@ -40,14 +59,28 @@ const IndexList = styled.ol`
   }
 `
 
-const Detail = styled.section`
+const DetailBox = styled.section`
   margin: 40px 8% 0;
+  
+  @media ${devices.desktop} {
+    margin: 4% 20%;
+  }
+`
+
+const Detail = styled.div`
+  @media ${devices.desktop} {
+    display: flex;
+    column-gap: 32px;
+  }
 `
 
 const DetailPhoto = styled.div`
-  width: 100%;
+  width: 300px;
+  height: 300px;
   margin-top: 8px;
 `
+
+const DetailInfo = styled.div``
 
 const DetailTitle = styled.h3`
   margin-top: 16px;
@@ -109,7 +142,7 @@ const Photo: NextPage = () => {
         </Header>
         <Main>
           <MainVisual>
-            <Image src='https://picsum.photos/1000/600' width='1000' height='600' layout='responsive' alt='メインビジュアル' />
+            <Image src='https://picsum.photos/1000/400' width='1000' height='400' layout='responsive' alt='メインビジュアル' />
           </MainVisual>
           <Index id="id">
             <h2>Index</h2>
@@ -121,28 +154,32 @@ const Photo: NextPage = () => {
               <li>タイトルタイトルタイトルタイトルタイトルタイトルタイトル</li>
             </IndexList>
           </Index>
-          <Detail>
+          <DetailBox>
             <h2>Detail</h2>
-            <DetailPhoto>
-              <Image src='https://picsum.photos/1000/1000' width='300' height='300' layout='responsive' alt='写真' ></Image>
-            </DetailPhoto>
-            <DetailTitle>タイトル</DetailTitle>
-            <DetailList>
-              {[
-                {name: '著者', value: 'タイトルタイトルタイトル'},
-                {name: '出版社', value: 'タイトルタイトルタイトル'},
-                {name: '発行年', value: 'タイトルタイトルタイトル'}
-              ].map((v, i) => (
-                <DetailItem key={i}>
-                  <dt>{v.name}</dt>
-                  <dd>{v.value}</dd>
-                </DetailItem>
-              ))}
-            </DetailList>
-            <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
-            <br />
-            <StoreLink href='#'>オンラインストアで見る</StoreLink>
-          </Detail>
+            <Detail>
+              <DetailPhoto>
+                <Image src='https://picsum.photos/1000/1000' width='300' height='300' layout='responsive' alt='写真' ></Image>
+              </DetailPhoto>
+              <DetailInfo>
+                <DetailTitle>タイトル</DetailTitle>
+                <DetailList>
+                  {[
+                    {name: '著者', value: 'タイトルタイトルタイトル'},
+                    {name: '出版社', value: 'タイトルタイトルタイトル'},
+                    {name: '発行年', value: 'タイトルタイトルタイトル'}
+                  ].map((v, i) => (
+                    <DetailItem key={i}>
+                      <dt>{v.name}</dt>
+                      <dd>{v.value}</dd>
+                    </DetailItem>
+                  ))}
+                </DetailList>
+                <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
+                <br />
+                <StoreLink href='#'>オンラインストアで見る</StoreLink>
+              </DetailInfo>
+            </Detail>
+          </DetailBox>
         </Main>
         <Footer>© 2020 Photo Book</Footer>
       </Container>
