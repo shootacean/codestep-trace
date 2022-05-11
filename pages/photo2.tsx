@@ -3,10 +3,20 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
-const BodyBox = styled.div``
+const devices = {
+  desktop: '(min-width: 1024px)',
+}
+
+const BodyBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const Header = styled.header`
   margin-top: 40px;
+  width: 100%;
   max-width: 1000px;
 
   h1 {
@@ -26,10 +36,28 @@ const Heading = styled.h2`
   text-align: center;
 `
 
+const Divider = styled.div`
+  width: 100%;
+  margin: 40px 0;
+  border-bottom: 1px solid #000;
+
+  @media ${devices.desktop} {
+    width: 1px;
+    margin: 12px 40px 4px;
+    border-bottom: 0;
+    border-right: 1px solid #000;
+  }
+`
+
 const IndexBox = styled.section`
+  width: 100%;
   margin-top: 40px;
   padding: 4%;
   background-color: #f5f5f5;
+
+  @media ${devices.desktop} {
+    padding: 4% 8% 8%;
+  }
 `
 
 const IndexList = styled.ol`
@@ -38,6 +66,10 @@ const IndexList = styled.ol`
   border: 1px solid #000;
   list-style-type: decimal;
   font-size: 1.0rem;
+
+  @media ${devices.desktop} {
+    padding: 4% 16%;
+  }
 
   li {
     margin-top: 16px;
@@ -50,29 +82,43 @@ const PhotoList = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin-top: 40px;
-  row-gap: 12px;
+  gap: 12px;
 `
 
 const Photo = styled.div`
   width: 100%;
-  // flex-basis: 50%;
+  
+  @media ${devices.desktop} {
+    flex-basis: 49%;
+  }
 `
 
-const Detail = styled.section`
+const DetailBox = styled.section`
+  width: 100%;
   margin-top: 40px;
-  padding: 8%;
+  padding: 4%;
   background-color: #f5f5f5;
+
+  @media ${devices.desktop} {
+    padding: 4% 8% 8%;
+  }
+`
+
+const Detail = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${devices.desktop} {
+    flex-direction: row;
+    margin-top: 32px;
+  }
 `
 
 const DetailList = styled.dl`
   font-size: 0.9rem;
 
-  :after {
-    content: '';
-    display: block;
-    width: 100%;
-    margin: 40px 0;
-    border-bottom: 1px solid #000;
+  @media ${devices.desktop} {
+    flex-basis: 32%;
   }
 `
 
@@ -87,6 +133,8 @@ const DetailItem = styled.div`
     }
   }
 `
+
+const DetailInfo = styled.div``
 
 const DetailDescription = styled.p`
   margin-top: 12px;
@@ -145,25 +193,30 @@ const Photo2: NextPage = () => {
               <Image src='https://picsum.photos/600/400' width='600' height='400' layout='responsive' alt='メインビジュアル' />
             </Photo>
           </PhotoList>
-          <Detail>
+          <DetailBox>
             <Heading>DETAIL</Heading>
-            <DetailList>
-              {[
-                {name: '著者', value: 'タイトルタイトルタイトル'},
-                {name: '出版社', value: 'タイトルタイトルタイトル'},
-                {name: '発行年', value: 'タイトルタイトルタイトル'}
-              ].map((v, i) => (
-                <DetailItem key={i}>
-                  <dt>{v.name}</dt>
-                  <dd>{v.value}</dd>
-                </DetailItem>
-              ))}
-            </DetailList>
-            <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
-            <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
-            <br />
-            <StoreLink href='#'>オンラインストアで見る</StoreLink>
-          </Detail>
+            <Detail>
+              <DetailList>
+                {[
+                  {name: '著者', value: 'タイトルタイトルタイトル'},
+                  {name: '出版社', value: 'タイトルタイトルタイトル'},
+                  {name: '発行年', value: '2022年5月11日'}
+                ].map((v, i) => (
+                  <DetailItem key={i}>
+                    <dt>{v.name}</dt>
+                    <dd>{v.value}</dd>
+                  </DetailItem>
+                ))}
+              </DetailList>
+              <Divider />
+              <DetailInfo>
+                <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
+                <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
+                <br />
+                <StoreLink href='#'>オンラインストアで見る</StoreLink>
+              </DetailInfo>
+            </Detail>
+          </DetailBox>
         </Main>
         <Footer>© 2020 Photo Book 2</Footer>
       </BodyBox>
