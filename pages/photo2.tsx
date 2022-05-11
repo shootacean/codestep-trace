@@ -8,6 +8,10 @@ const BodyBox = styled.div``
 const Header = styled.header`
   margin-top: 40px;
   max-width: 1000px;
+
+  h1 {
+    padding: 10px;
+  }
 `
 
 const MainVisual = styled.div``
@@ -56,11 +60,51 @@ const Photo = styled.div`
 
 const Detail = styled.section`
   margin-top: 40px;
-  padding: 4%;
+  padding: 8%;
   background-color: #f5f5f5;
 `
 
-const Footer = styled.footer``
+const DetailList = styled.dl`
+  font-size: 0.9rem;
+
+  :after {
+    content: '';
+    display: block;
+    width: 100%;
+    margin: 40px 0;
+    border-bottom: 1px solid #000;
+  }
+`
+
+const DetailItem = styled.div`
+  margin-top: 10px;
+
+  dt {
+    font-weight: bold;
+
+    :after {
+      content: '：';
+    }
+  }
+`
+
+const DetailDescription = styled.p`
+  margin-top: 12px;
+  font-size: 1.0rem;
+`
+
+const StoreLink = styled.a`
+  font-size: 1.0rem;
+  text-decoration: underline;
+`
+
+const Footer = styled.footer`
+  width: 100%;
+  margin-top: 32px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+`
 
 const Photo2: NextPage = () => {
   return (
@@ -103,9 +147,25 @@ const Photo2: NextPage = () => {
           </PhotoList>
           <Detail>
             <Heading>DETAIL</Heading>
+            <DetailList>
+              {[
+                {name: '著者', value: 'タイトルタイトルタイトル'},
+                {name: '出版社', value: 'タイトルタイトルタイトル'},
+                {name: '発行年', value: 'タイトルタイトルタイトル'}
+              ].map((v, i) => (
+                <DetailItem key={i}>
+                  <dt>{v.name}</dt>
+                  <dd>{v.value}</dd>
+                </DetailItem>
+              ))}
+            </DetailList>
+            <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
+            <DetailDescription>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</DetailDescription>
+            <br />
+            <StoreLink href='#'>オンラインストアで見る</StoreLink>
           </Detail>
         </Main>
-        <Footer></Footer>
+        <Footer>© 2020 Photo Book 2</Footer>
       </BodyBox>
     </>
   )
